@@ -1,9 +1,11 @@
-import Header from "./components/LoginForm/Header/Header";
+import Footer from "./components/Footer/";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
       <Header />
+      <Footer />
     </>
   );
 }
