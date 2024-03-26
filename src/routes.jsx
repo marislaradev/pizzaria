@@ -1,11 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PageBase from "./pages/PageBase";
+import Home from "./pages/Home";
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<PageBase />}></Route>
+        <Route path="/" element={<PageBase />}>
+        <Route index element={<Home />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   );
