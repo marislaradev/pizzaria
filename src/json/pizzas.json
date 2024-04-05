@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "3 Décadas",
+        "ingredients": "Molho de tomate, muçarela, lombo, frango desfiado, champignon, requeijão cremoso e orégano",
+        "price": 29.00
+    },
+    {
+        "id": 2,
+        "name": "4 Estações com Cebola",
+        "ingredients": "Molho de tomate, muçarela, atum ralado, milho, cebola e orégano",
+        "price": 25.00
+    },
+    {
+        "id": 3,
+        "name": "4 Estações sem Cebola",
+        "ingredients": "Molho de tomate, muçarela, atum ralado, milho e orégano",
+        "price": 25.00
+    },
+    {
+        "id": 4,
+        "name": "4 Queijos",
+        "ingredients": "Molho de tomate, muçarela, provolone, parmesão, requeijão cremoso e orégano",
+        "price": 25.00
+    },
+    {
+        "id": 5,
+        "name": "5 Queijos",
+        "ingredients": "Molho de tomate, muçarela, provolone, parmesão, requeijão cremoso, cheddar e orégano",
+        "price": 25.00
+    }
+]
