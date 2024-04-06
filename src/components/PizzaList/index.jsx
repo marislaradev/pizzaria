@@ -1,5 +1,5 @@
 import PizzaItem from "../PizzaItem";
-import pizzasData from '../../json/pizzas.json'
+import pizzasData from "../../json/pizzas.json"
 
 function PizzaList() {
   return (

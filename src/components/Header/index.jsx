@@ -1,4 +1,5 @@
-import logo from "./images/logo.png"
+import { Link } from "react-router-dom";
+import logo from "./images/logo.png";
 
 function Header() {
   return (
@@ -7,18 +8,18 @@ function Header() {
         <img className="w-60" src={logo} />
       </span>
       <nav>
-        <a className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        <Link to="/" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Home
-        </a>
-        <a className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        </Link>
+        <Link to="/carrinho" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Carrinho
-        </a>
-        <a className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
-          Pedidos
-        </a>
-        <a className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        </Link>
+        <Link to="/cardapio" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+          Cardápio
+        </Link>
+        <Link to="/perfil" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Perfil
-        </a>
+        </Link>
       </nav>
     </header>
   );
