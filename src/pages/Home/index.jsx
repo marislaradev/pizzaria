@@ -1,5 +1,4 @@
 import LoginForm from "../../components/LoginForm";
-import PizzaList from "../../components/PizzaList";
 import pizza from "./images/pizza.png";
 
 function Home() {

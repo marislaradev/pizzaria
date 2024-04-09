@@ -13,7 +13,7 @@ function PizzaItem({ name, ingredients, price }) {
       <p className="block text-xl font-semibold text-gray-700 cursor-auto mt-1">
         {formattedPrice}
       </p>
-     <QuantitySelector />
+      <QuantitySelector />
     </section>
   );
 }
