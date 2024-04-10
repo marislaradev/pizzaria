@@ -1,6 +1,14 @@
 import QuantitySelector from "../QuantitySelector";
+import { useCart } from "../../contexts/Cart";
 
 function PizzaItem({ name, ingredients, price }) {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    const pizza = { name, ingredients, price };
+    addToCart(pizza);
+  };
+
   const formattedPrice = price.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
@@ -13,7 +21,13 @@ function PizzaItem({ name, ingredients, price }) {
       <p className="block text-xl font-semibold text-gray-700 cursor-auto mt-1">
         {formattedPrice}
       </p>
-      <QuantitySelector />
+      <button
+        onClick={handleAddToCart}
+        className="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
+      >
+        Adicionar ao carrinho
+      </button>
+      {/* <QuantitySelector /> */}
     </section>
   );
 }
