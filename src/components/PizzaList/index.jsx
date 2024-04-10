@@ -9,8 +9,7 @@ function PizzaList() {
           key={pizza.id}
           name={pizza.name}
           ingredients={pizza.ingredients}
-          price={pizza.price}
-        />
+          price={pizza.price} />
       ))}
     </div>
   );

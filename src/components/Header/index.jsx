@@ -11,11 +11,11 @@ function Header() {
         <Link to="/" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Home
         </Link>
-        <Link to="/carrinho" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
-          Carrinho
-        </Link>
         <Link to="/cardapio" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Cardápio
+        </Link>
+        <Link to="/carrinho" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+          Carrinho
         </Link>
         <Link to="/perfil" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
           Perfil
