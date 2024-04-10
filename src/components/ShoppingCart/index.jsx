@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/Cart";
 
 function formattedPrice(price) {
@@ -27,6 +28,14 @@ function ShoppingCart() {
           </li>
         ))}
       </ul>
+      <div>
+        <Link
+          to="/cardapio"
+          className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-mostarda hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
+        >
+          Adicionar mais itens
+        </Link>
+      </div>
       <p className="font-bold text-center">Total: R$ {total().toFixed(2)}</p>
     </div>
   );
