@@ -10,13 +10,22 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (pizza) => {
-    setCartItems([...cartItems, pizza]);
+    setCartItems(prevCartItems => {
+      const updatedCart = [...prevCartItems, pizza];
+      console.log("item adicionado ao carrinho:", pizza);
+      console.log("carrinho atualizado:", updatedCart);
+      return updatedCart;
+    });
   };
 
   const removeFromCart = (index) => {
-    const updatedCart = [...cartItems];
-    updatedCart.splice(index, 1);
-    setCartItems(updatedCart);
+    setCartItems(prevCartItems => {
+      const updatedCart = [...prevCartItems];
+      updatedCart.splice(index, 1);
+      console.log("item removido do carrinho:", prevCartItems[index]);
+      console.log("carrinho atualizado:", updatedCart);
+      return updatedCart;
+    });
   };
 
   const total = () => {

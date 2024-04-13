@@ -8,8 +8,8 @@ function formattedPrice(price) {
 function ShoppingCart() {
   const { cartItems, removeFromCart, total, addToCart } = useCart();
 
-  const addOneMoreItem = (pizza) => {
-    addToCart(pizza);
+  const countItemsById = (id) => {
+    return cartItems.filter((item) => item.id === id).length;
   };
 
   return (
@@ -18,25 +18,36 @@ function ShoppingCart() {
         Carrinho
       </h1>
       <ul>
-        {cartItems.map((item, index) => (
-          <li key={index}>
-            <span>
-              {item.name} - {formattedPrice(item.price)}
-            </span>
-            <button
-              className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
-              onClick={() => removeFromCart(index)}
-            >
-              Remover item
-            </button>
-            <button
-              className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
-              onClick={() => addOneMoreItem(item)}
-            >
-              Aumentar quantidade
-            </button>
-          </li>
-        ))}
+        {cartItems
+          .reduce((uniqueItems, item) => {
+            const exists = uniqueItems.find(
+              (uniqueItem) => uniqueItem.id === item.id
+            );
+            if (!exists) {
+              uniqueItems.push({ ...item, quantity: countItemsById(item.id) });
+            }
+            return uniqueItems;
+          }, [])
+          .map((item, index) => (
+            <li key={index}>
+              <span>
+                {item.name} - {formattedPrice(item.price)} -
+                {item.quantity > 1 && ` Quantidade: ${item.quantity}`}
+              </span>
+              <button
+                className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
+                onClick={() => removeFromCart(index)}
+              >
+                Diminuir quantidade
+              </button>
+              <button
+                className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
+                onClick={() => addToCart(item)}
+              >
+                Aumentar quantidade
+              </button>
+            </li>
+          ))}
       </ul>
       <div>
         <Link

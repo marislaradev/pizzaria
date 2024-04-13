@@ -1,11 +1,10 @@
-import QuantitySelector from "../QuantitySelector";
 import { useCart } from "../../contexts/Cart";
 
-function PizzaItem({ name, ingredients, price }) {
+function PizzaItem({ id, name, ingredients, price }) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    const pizza = { name, ingredients, price };
+    const pizza = { id, name, price };
     addToCart(pizza);
   };
 
