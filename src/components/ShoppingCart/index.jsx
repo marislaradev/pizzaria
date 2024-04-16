@@ -1,15 +1,21 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/Cart";
 
-function formattedPrice(price) {
+export function formattedPrice(price) {
   return price.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 function ShoppingCart() {
-  const { cartItems, removeFromCart, total, addToCart } = useCart();
+  const { cartItems, removeFromCart, total, clearCart, addToCart } = useCart();
 
   const countItemsById = (id) => {
     return cartItems.filter((item) => item.id === id).length;
+  };
+
+  const handleCheckout = () => {
+    clearCart();
+    alert("Pedido finalizado com sucesso!");
   };
 
   return (
@@ -56,6 +62,12 @@ function ShoppingCart() {
         >
           Voltar ao cardápio
         </Link>
+        <button
+          className="mt-2 mb-4 w-fit flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-molho_de_tomate hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105"
+          onClick={handleCheckout}
+        >
+          Finalizar Compra
+        </button>
       </div>
       <p className="font-bold text-center">Total: R$ {total().toFixed(2)}</p>
     </div>
