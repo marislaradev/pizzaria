@@ -6,7 +6,7 @@ function Home() {
   return (
     <section className="w-full min-h-[90vh] flex items-center justify-center">
       <div className="flex gap-8">
-        <LoginForm />
+        {/* <LoginForm /> */}
         <SignupForm />
       </div>
       {/* <figure>

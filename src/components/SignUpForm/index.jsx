@@ -1,17 +1,24 @@
-import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 import { useUserAuthentication } from "../../contexts/UserAuthentication";
 
 function SignupForm() {
-  const { signup, errorMessage, validationSchema } = useUserAuthentication();
-  const [cadastroSucesso, setCadastroSucesso] = useState(false);
+  const { signup, message } = useUserAuthentication(); 
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    const { name, email, password } = values;
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .required("Campo obrigatório")
+      .matches(/^[a-zA-ZÀ-ÿ\s]+$/, "Apenas letras são permitidas no nome"),
+    email: Yup.string().email("Email inválido").required("Campo obrigatório"),
+    password: Yup.string()
+      .required("Campo obrigatório")
+      .min(4, "A senha deve ter no mínimo 4 caracteres"),
+  });
+
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      await signup(name, email, password);
-      setCadastroSucesso(true);
-      resetForm(); // Limpa o formulário
+      await signup(values.name, values.email, values.password);
+      console.log("Usuário cadastrado com sucesso!");
     } catch (error) {
       console.error(error);
     }
@@ -32,14 +39,14 @@ function SignupForm() {
                 Cadastro
               </h1>
               <label
-                htmlFor="signupName"
+                htmlFor="name"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
                 Nome:
               </label>
               <Field
                 type="text"
-                id="signupName"
+                id="name"
                 name="name"
                 className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-molho_de_tomate focus:border-molho_de_tomate"
               />
@@ -51,14 +58,14 @@ function SignupForm() {
             </div>
             <div className="mb-4">
               <label
-                htmlFor="signupEmail"
+                htmlFor="email"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
                 Email:
               </label>
               <Field
                 type="email"
-                id="signupEmail"
+                id="email"
                 name="email"
                 className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-molho_de_tomate focus:border-molho_de_tomate"
               />
@@ -70,14 +77,14 @@ function SignupForm() {
             </div>
             <div className="mb-4">
               <label
-                htmlFor="signupPassword"
+                htmlFor="password"
                 className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
               >
                 Senha:
               </label>
               <Field
                 type="password"
-                id="signupPassword"
+                id="password"
                 name="password"
                 autoComplete="new-password"
                 className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-manjerona focus:border-manjerona"
@@ -88,10 +95,8 @@ function SignupForm() {
                 className="text-sm font-medium text-red-600 dark:text-red-600 mb-2"
               />
             </div>
-            {errorMessage && (
-              <p className="text-red-600 text-sm font-medium mb-4">
-                {errorMessage}
-              </p>
+            {message && (
+              <p className="text-red-600 text-sm font-medium mb-4">{message}</p>
             )}
             <button
               type="submit"
@@ -101,11 +106,6 @@ function SignupForm() {
               Cadastrar
             </button>
           </div>
-          {cadastroSucesso && (
-            <div className="bg-green-200 text-green-800 rounded-md px-4 py-2 mt-4">
-              Cadastro realizado com sucesso!
-            </div>
-          )}
         </Form>
       )}
     </Formik>
