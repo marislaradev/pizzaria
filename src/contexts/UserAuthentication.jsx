@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const UserAuthenticationContext = createContext();
 
@@ -8,6 +9,7 @@ export const useUserAuthentication = () => {
 };
 
 export const UserAuthenticationProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -22,10 +24,9 @@ export const UserAuthenticationProvider = ({ children }) => {
   });
 
   const login = async (email, password) => {
-    // Lógica de login
   };
 
-  const signup = async (name, email, password, formik) => {
+  const signup = async (name, email, password) => {
     try {
       await validationSchema.validate(
         { name, email, password },
@@ -33,9 +34,14 @@ export const UserAuthenticationProvider = ({ children }) => {
       );
       const newUser = { name, email };
       setUser(newUser);
-      setMessage("Usuário cadastrado com sucesso!"); 
+      setMessage("Usuário cadastrado com sucesso!");
+
+      setTimeout(() => {
+        setMessage(null);
+        navigate("/cardapio")
+      }, 2000);
     } catch (error) {
-      setMessage("Erro ao cadastrar usuário. Tente novamente!"); 
+      setMessage("Erro ao cadastrar usuário. Tente novamente!");
     }
   };
 
