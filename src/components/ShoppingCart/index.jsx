@@ -23,7 +23,12 @@ function ShoppingCart() {
         Carrinho
       </h1>
       {cartItems.length === 0 ? (
+        <>
         <p className="text-center">Seu carrinho está vazio... 🛒</p>
+        <Link
+        to="/cardapio"
+        className="block mx-auto mt-4 mb-4 w-fit py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-mostarda hover:bg-queijo-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-molho_de_tomate transform transition-transform hover:scale-105">Ver cardápio 🍕</Link>
+        </>
       ) : (
         <>
           <ul>
