@@ -3,7 +3,7 @@ import logo from "./images/logo.png";
 
 function Header() {
   return (
-    <header className="w-full h-16 bg-mostarda text-white fixed top-0 flex items-center justify-between pl-6">
+    <header className="w-full h-16 bg-mostarda text-white fixed top-0 flex items-center justify-between pl-6 z-10">
       <Link to="/">
         <span className="text-1 font-bold">
           <img className="w-28" src={logo} />
