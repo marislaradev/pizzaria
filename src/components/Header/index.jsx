@@ -3,21 +3,35 @@ import logo from "./images/logo.png";
 
 function Header() {
   return (
-    <header className="w-full h-16 bg-molho_de_tomate text-white fixed top-0 flex items-center justify-between pl-6">
-      <span className="text-1 font-bold">
-        <img className="w-60" src={logo} />
-      </span>
+    <header className="w-full h-16 bg-mostarda text-white fixed top-0 flex items-center justify-between pl-6">
+      <Link to="/">
+        <span className="text-1 font-bold">
+          <img className="w-28" src={logo} />
+        </span>
+      </Link>
       <nav>
-        <Link to="/" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        <Link
+          to="/"
+          className="text-white no-underline pr-6 text-lg hover:text-red-800"
+        >
           Home
         </Link>
-        <Link to="/cardapio" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        <Link
+          to="/cardapio"
+          className="text-white no-underline pr-6 text-lg  hover:text-red-800"
+        >
           Cardápio
         </Link>
-        <Link to="/carrinho" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        <Link
+          to="/carrinho"
+          className="text-white no-underline pr-6 text-lg  hover:text-red-800"
+        >
           Carrinho
         </Link>
-        <Link to="/perfil" className="text-white no-underline pr-6 text-lg hover:text-yellow-600">
+        <Link
+          to="/perfil"
+          className="text-white no-underline pr-6 text-lg  hover:text-red-800"
+        >
           Perfil
         </Link>
       </nav>

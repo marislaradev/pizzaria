@@ -1,0 +1,28 @@
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .fixedPage {
+      position: fixed;
+      top: 64px;
+      overflow: auto;
+  }
+  
+  .pizzaContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: white; */
+    width: 90%;
+    height: 90%;
+  }
+  
+  .rotatingPizza {
+    animation: rotate 60s linear infinite;
+  }
+  

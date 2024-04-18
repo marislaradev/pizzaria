@@ -1,17 +1,17 @@
 /* estilizações do scrollbar */
 body::-webkit-scrollbar {
   width: 12px;
-  background-color: #222;
+  background-color: #457431;
 }
 
 body::-webkit-scrollbar-track {
-  background: #222;
+  background: #457431;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #890705ff;
+  background-color: #A4240E;
   border-radius: 20px;
-  border: 3px solid #222;
+  border: 3px solid #457431;
 }
 
 /* tailwind diretivas */

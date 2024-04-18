@@ -7,11 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        queijo: '#f4d122ff',
-        mostarda: '#e19410ff',
-        molho_de_tomate:' #890705ff',
-        azeite: '#b3ae60ff',
-        manjerona: '#5b5e0aff',
+        queijo: '#F3F0D9',
+        mostarda: '#457431',
+        molho_de_tomate:'#A4240E',
+        azeite: '#4D7836',
+        manjerona: '#457431',
       }
     },
   },
